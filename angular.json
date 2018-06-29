@@ -11,6 +11,9 @@
       "schematics": {
         "@schematics/angular:component": {
           "styleext": "scss"
+        },
+        "@ngrx/schematics:component": {
+          "styleext": "scss"
         }
       },
       "architect": {
@@ -127,5 +130,8 @@
       }
     }
   },
-  "defaultProject": "timetool"
+  "defaultProject": "timetool",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

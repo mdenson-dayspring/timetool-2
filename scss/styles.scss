@@ -1,0 +1,48 @@
+// for more info on extending this file see
+//    https://ianbriggs.wordpress.com/2014/08/10/the-sassy-way-to-extend-bootstrap/
+
+@import "slim-bootstrap";
+
+.form-control-label {
+  display: block;
+}
+.bg-primary {
+  background-color: $bg-primary-color !important;
+}
+
+.size-width_x-small {
+  max-width: 320px;
+}
+.size-width_small {
+  max-width: 575px;
+}
+.size-width_medium {
+  max-width: 767px;
+}
+.size-width_large {
+  max-width: 991px;
+}
+.size-width_x-large {
+  max-width: 1199px;
+}
+
+.incomplete {
+  .table {
+    .today {
+      cursor: pointer;
+    }
+
+  }
+}
+.table {
+  .today {
+    background-color: $bg-primary-color !important;
+  }
+
+  .total-row {
+    td, th {
+      border-top: 1px solid #343a40;
+      font-weight: bold;
+    }
+  }
+}
