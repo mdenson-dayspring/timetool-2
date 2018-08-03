@@ -1,0 +1,51 @@
+{
+  "npmScope": "timetool",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "timetool": {
+      "tags": []
+    },
+    "timetool-e2e": {
+      "tags": []
+    },
+    "week-api-client": {
+      "tags": []
+    },
+    "utils-time-model": {
+      "tags": [
+        "shared",
+        "lib:util"
+      ]
+    },
+    "store-context": {
+      "tags": [
+        "shared",
+        "lib:data"
+      ]
+    },
+    "utils-timesheet-client": {
+      "tags": [
+        "shared",
+        "lib:util"
+      ]
+    },
+    "environment": {
+      "tags": [
+        "shared",
+        "lib:util"
+      ]
+    },
+    "store-timesheet": {
+      "tags": [
+        "shared",
+        "lib:data"
+      ]
+    }
+  }
+}
