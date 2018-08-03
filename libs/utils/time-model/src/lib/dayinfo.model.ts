@@ -1,7 +1,8 @@
 /**
  * Created by mdenson on 12/11/2015.
  */
-import { HM, DayOfWeek } from '.';
+import { HM } from './hourminute.model';
+import { DayOfWeek } from './today.model';
 
 export class DayInfo {
   dayOfWeek: DayOfWeek;

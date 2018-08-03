@@ -9,7 +9,7 @@ import { HM } from '@timetool/utils/time-model/src/lib';
 
 @Component({
   selector: 'tt-root',
-  template: require('./app.component.html')
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnDestroy {
   now: HM;
