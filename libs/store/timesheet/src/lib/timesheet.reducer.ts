@@ -1,5 +1,5 @@
 import { TimesheetActions, TimesheetActionTypes } from './timesheet.actions';
-import { TimesheetWeek } from '@timetool/store/timesheet/src/lib/store/timesheet.model';
+import { TimesheetWeek } from './timesheet.model';
 import { DayInfo } from '@timetool/utils/time-model/src/lib';
 
 export const initialState: TimesheetWeek = {

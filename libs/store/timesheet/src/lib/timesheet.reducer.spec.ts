@@ -1,6 +1,6 @@
 import { timesheetReducer, initialState } from './timesheet.reducer';
-import { SetWeekAction } from '@timetool/store/timesheet/src/lib/store/timesheet.actions';
-import { TimesheetWeek } from '@timetool/store/timesheet/src/lib/store/timesheet.model';
+import { SetWeekAction } from './timesheet.actions';
+import { TimesheetWeek } from './timesheet.model';
 
 describe('timesheetReducer', () => {
   it('should work', () => {

@@ -5,8 +5,8 @@ import { EffectsModule } from '@ngrx/effects';
 import {
   contextReducer,
   initialState as contextInitialState
-} from './store/context.reducer';
-import { ContextEffects } from './store/context.effects';
+} from './context.reducer';
+import { ContextEffects } from './context.effects';
 @NgModule({
   imports: [
     CommonModule,

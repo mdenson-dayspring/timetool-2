@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { hot, cold } from 'jasmine-marbles';
 import { TimesheetClientService } from '@timetool/utils/timesheet-client/src/lib/timesheet-client.service';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { FetchWeekAction, SetWeekAction } from '@timetool/store/timesheet/src/lib/store/timesheet.actions';
+import { FetchWeekAction, SetWeekAction } from './timesheet.actions';
 import { StoreModule } from '@ngrx/store';
 import { DayInfo, HM } from '@timetool/utils/time-model/src/lib';
 

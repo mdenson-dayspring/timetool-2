@@ -5,8 +5,8 @@ import { EffectsModule } from '@ngrx/effects';
 import {
   timesheetReducer,
   initialState as timesheetInitialState
-} from './store/timesheet.reducer';
-import { TimesheetEffects } from './store/timesheet.effects';
+} from './timesheet.reducer';
+import { TimesheetEffects } from './timesheet.effects';
 import { UtilsTimesheetClientModule } from '@timetool/utils/timesheet-client/src';
 @NgModule({
   imports: [
