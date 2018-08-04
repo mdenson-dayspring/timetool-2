@@ -14,9 +14,6 @@
     "timetool-e2e": {
       "tags": []
     },
-    "week-api-client": {
-      "tags": []
-    },
     "utils-time-model": {
       "tags": [
         "shared",
@@ -25,7 +22,6 @@
     },
     "store-context": {
       "tags": [
-        "shared",
         "lib:data"
       ]
     },

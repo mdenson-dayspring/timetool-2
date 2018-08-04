@@ -1,16 +1,16 @@
 import { async, TestBed } from '@angular/core/testing';
-import { WeekApiClientModule } from './week-api-client.module';
+import { AppModule } from './app.module';
 
-describe('WeekApiClientModule', () => {
+describe('EnvironmentModule', () => {
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        imports: [WeekApiClientModule]
+        imports: [AppModule]
       }).compileComponents();
     })
   );
 
   it('should create', () => {
-    expect(WeekApiClientModule).toBeDefined();
+    expect(AppModule).toBeDefined();
   });
 });
