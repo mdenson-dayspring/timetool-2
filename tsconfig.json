@@ -61,6 +61,12 @@
       ],
       "@timetool/store/timesheet": [
         "libs/store/timesheet/src/index.ts"
+      ],
+      "ui-framework/*": [
+        "dist/ui-framework/*"
+      ],
+      "@timetool/ui/framework": [
+        "libs/ui/framework/src/index.ts"
       ]
     }
   }
