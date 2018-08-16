@@ -17,8 +17,6 @@ import { UtilsTimesheetClientModule } from '@timetool/utils/timesheet-client/src
     EffectsModule.forFeature([TimesheetEffects]),
     UtilsTimesheetClientModule
   ],
-  providers: [
-    TimesheetEffects
-  ]
+  providers: [TimesheetEffects]
 })
 export class StoreTimesheetModule {}

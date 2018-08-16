@@ -22,22 +22,20 @@ export class TimesheetClientService {
           staff +
           '&today=' +
           weekDate;
-        this.$http
-          .get(url)
-          .subscribe({
-            next: (data: any[]) => {
-              const dayList = data.map((day: { [key: string]: any }) => {
-                return new DayInfo(
-                  day.day_of_week,
-                  undefined,
-                  new HM(day.minutes)
-                );
-              });
-              subscriber.next(dayList);
-              subscriber.complete();
-            },
-            error: _ => console.error('Could not load week.')
-          });
+        this.$http.get(url).subscribe({
+          next: (data: any[]) => {
+            const dayList = data.map((day: { [key: string]: any }) => {
+              return new DayInfo(
+                day.day_of_week,
+                undefined,
+                new HM(day.minutes)
+              );
+            });
+            subscriber.next(dayList);
+            subscriber.complete();
+          },
+          error: _ => console.error('Could not load week.')
+        });
       } else {
         subscriber.complete();
         console.warn('Staff member is not set.');

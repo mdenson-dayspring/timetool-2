@@ -9,7 +9,7 @@ export function asyncData<T>(data: T) {
 }
 
 describe('TimesheetClientService', () => {
-  let httpClientSpy: {get: jasmine.Spy };
+  let httpClientSpy: { get: jasmine.Spy };
   let tsClientServive: TimesheetClientService;
 
   beforeEach(() => {
@@ -29,17 +29,19 @@ describe('TimesheetClientService', () => {
     ];
 
     const expectedDays: DayInfo[] = [
-      new DayInfo( 1, undefined, new HM(510) ),
-      new DayInfo( 2, undefined, new HM(456) ),
-      new DayInfo( 3, undefined, new HM(456) )
+      new DayInfo(1, undefined, new HM(510)),
+      new DayInfo(2, undefined, new HM(456)),
+      new DayInfo(3, undefined, new HM(456))
     ];
 
     httpClientSpy.get.and.returnValue(asyncData(receivedRaw));
 
-    tsClientServive.fetchTimeData('mdenson', '').subscribe(
-      list => expect(list).toEqual(expectedDays, 'expected day information'),
-      fail
-    );
+    tsClientServive
+      .fetchTimeData('mdenson', '')
+      .subscribe(
+        list => expect(list).toEqual(expectedDays, 'expected day information'),
+        fail
+      );
     expect(httpClientSpy.get.calls.count()).toBe(1, 'one call');
   });
 });

@@ -16,9 +16,7 @@ describe('TimesheetEffects', () => {
   beforeEach(() => {
     tssSpy = jasmine.createSpyObj('TimesheetClientService', ['fetchTimeData']);
     TestBed.configureTestingModule({
-      imports: [
-        StoreModule.forRoot({})
-      ],
+      imports: [StoreModule.forRoot({})],
       providers: [
         TimesheetEffects,
         provideMockActions(() => actions$),
@@ -35,9 +33,9 @@ describe('TimesheetEffects', () => {
   it('should work', () => {
     const action = new FetchWeekAction();
     const daysToReturn: DayInfo[] = [
-      new DayInfo( 1, undefined, new HM(510) ),
-      new DayInfo( 2, undefined, new HM(456) ),
-      new DayInfo( 3, undefined, new HM(456) )
+      new DayInfo(1, undefined, new HM(510)),
+      new DayInfo(2, undefined, new HM(456)),
+      new DayInfo(3, undefined, new HM(456))
     ];
 
     const completion = new SetWeekAction(daysToReturn);
@@ -49,5 +47,4 @@ describe('TimesheetEffects', () => {
 
     expect(effects.fetchWeek$).toBeObservable(expected);
   });
-
 });

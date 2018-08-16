@@ -20,7 +20,6 @@ export class AppComponent implements OnDestroy {
   constructor(
     @Inject(DOCUMENT) private document: any,
     private renderer: Renderer2
-    // private store: Store<fromRoot.State>
   ) {
     // this.touchTest = this.renderer.listen('window', 'touchstart', evt => {
     //   // this.$log.log('Setting touch supported');
@@ -32,16 +31,16 @@ export class AppComponent implements OnDestroy {
     //   this.store.dispatch(new contextActions.SetHoverDeviceSupportAction());
     //   this.hoverTest();
     // });
-
+    //
     // this.document
     //   .getElementById('appFavicon')
     //   .setAttribute('href', `${PATH_TO_IMGS('./icon.png')}`);
     // this.now = HM.Now();
     // store.dispatch(new contextActions.LoadPageAction(this.now));
-
+    //
     // store.dispatch(new timesheetActions.ResetWeekAction());
     // store.dispatch(new timesheetActions.FetchWeekAction());
-
+    //
     // interval(1000)
     //   .pipe(
     //     map(() => HM.Now()),
