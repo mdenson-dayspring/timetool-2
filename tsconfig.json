@@ -38,11 +38,11 @@
       "@timetool/utils/time-model": [
         "libs/utils/time-model/src/index.ts"
       ],
-      "context-data/*": [
-        "dist/context-data/*"
+      "store-context/*": [
+        "dist/store-context/*"
       ],
-      "@timetool/context-data": [
-        "libs/context-data/src/index.ts"
+      "@timetool/store/context": [
+        "libs/store/context/src/index.ts"
       ],
       "utils-timesheet-client/*": [
         "dist/utils-timesheet-client/*"

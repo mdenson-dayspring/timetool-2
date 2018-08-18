@@ -8,7 +8,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { NxModule } from '@nrwl/nx';
-import { environment } from '@timetool/environment/src/lib/environment.prod';
+import { environment } from '@timetool/environment/src/lib/environment';
 import { UtilsTimesheetClientModule } from '@timetool/utils/timesheet-client/src';
 import { StoreContextModule } from '@timetool/store/context/src/lib/store-context.module';
 import { StoreTimesheetModule } from '@timetool/store/timesheet/src';

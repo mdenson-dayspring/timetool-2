@@ -1,16 +1,11 @@
 import { ContextActions, ContextActionTypes } from './context.actions';
 import { ContextData, TodayTimes } from './context.model';
-import { Today, HM } from '@timetool/utils/time-model/src/lib';
-
-/**
- * Interface to the part of the Store containing ContextState
- * and other information related to ContextData.
- */
-export interface ContextState {
-  readonly context: ContextData;
-}
+import { Today, HM } from '@timetool/utils/time-model';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 export const initialState: ContextData = {
+  tick: undefined,
+
   staff: '',
   expected: {
     arrive: '9:00',
@@ -37,8 +32,7 @@ export function contextReducer(
         (action as { payload: ContextData }).payload
       );
 
-    case ContextActionTypes.LOAD_PAGE:
-      return updateNow(state, (action as { payload: HM }).payload);
+    case ContextActionTypes.START_CLOCK:
     case ContextActionTypes.TICK:
       return updateNow(state, (action as { payload: HM }).payload);
 
@@ -46,22 +40,16 @@ export function contextReducer(
       return updateExpected(state, (action as { payload: TodayTimes }).payload);
 
     case ContextActionTypes.SET_TOUCH_DEVICE:
-      return Object.assign(initialState, state, {
-        touchSupported: true
-      });
+      return { ...state, ...{ touchSupported: true } };
+
     case ContextActionTypes.SET_HOVER_DEVICE:
-      return Object.assign(initialState, state, {
-        hoverSupported: true
-      });
+      return { ...state, ...{ hoverSupported: true } };
 
     case ContextActionTypes.HIDE_TIMELINE_HELP:
-      return Object.assign(initialState, state, {
-        hideTimelineHelp: true
-      });
+      return { ...state, ...{ hideTimelineHelp: true } };
+
     case ContextActionTypes.HIDE_WEEK_HELP:
-      return Object.assign({}, state, {
-        hideWeekHelp: true
-      });
+      return { ...state, ...{ hideWeekHelp: true } };
 
     default:
       return state;
@@ -69,38 +57,51 @@ export function contextReducer(
 }
 
 function updateExpected(
-  context: ContextData,
+  state: ContextData,
   newTimes: TodayTimes
 ): ContextData {
-  const nowHM = context.now.leave;
-  context = Object.assign(initialState, context, { expected: newTimes });
-  return updateNow(context, nowHM);
+  const nowHM = state.now.leave;
+  state = { ...state, ...{ expected: newTimes } };
+  return updateNow(state, nowHM);
 }
 
 function updateSettings(
-  context: ContextData,
+  state: ContextData,
   newSettings: ContextData
 ): ContextData {
-  context = Object.assign(initialState, context, {
-    staff: newSettings.staff,
-    goals: newSettings.goals
-  });
-  return context;
+  return {
+    ...state, ...{
+      staff: newSettings.staff,
+      goals: newSettings.goals
+    }
+  };
 }
 
 function updateNow(context: ContextData, nowHM: HM): ContextData {
-  return Object.assign(initialState, context, {
-    today: new Today(
-      new HM(context.expected.arrive),
-      new HM(context.expected.lunch),
-      new HM(context.expected.leave)
-    ),
-    now: new Today(
-      new HM(context.expected.arrive),
-      new HM(context.expected.lunch),
-      nowHM
-    )
-  });
+  return {
+    ...context, ...{
+      tick: nowHM,
+      today: new Today(
+        new HM(context.expected.arrive),
+        new HM(context.expected.lunch),
+        new HM(context.expected.leave)
+      ),
+      now: new Today(
+        new HM(context.expected.arrive),
+        new HM(context.expected.lunch),
+        nowHM
+      )
+    }
+  };
 }
 
-export const getContextState = (state: ContextData) => state;
+export const getContextDataState = createFeatureSelector('context');
+
+export const selectLastTick = createSelector(
+  getContextDataState,
+  (state: ContextData) => state.tick
+);
+export const selectStaff = createSelector(
+  getContextDataState,
+  (state: ContextData) => state.staff
+);

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  timesheet_base_uri: 'public/data/staff.json'
+  timesheet_base_uri: 'assets/data/staff.json'
 };
 
 /*
