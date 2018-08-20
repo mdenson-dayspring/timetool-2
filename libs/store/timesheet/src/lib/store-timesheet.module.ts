@@ -8,6 +8,7 @@ import {
 } from './timesheet.reducer';
 import { TimesheetEffects } from './timesheet.effects';
 import { UtilsTimesheetClientModule } from '@timetool/utils/timesheet-client/src';
+import { StoreTimesheetService } from '@timetool/store/timesheet/src/lib/store-timesheet.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +18,6 @@ import { UtilsTimesheetClientModule } from '@timetool/utils/timesheet-client/src
     EffectsModule.forFeature([TimesheetEffects]),
     UtilsTimesheetClientModule
   ],
-  providers: [TimesheetEffects]
+  providers: [TimesheetEffects, StoreTimesheetService]
 })
 export class StoreTimesheetModule {}

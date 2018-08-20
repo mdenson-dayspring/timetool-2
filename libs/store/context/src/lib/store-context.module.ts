@@ -8,6 +8,7 @@ import {
   initialState as contextInitialState
 } from './context.reducer';
 import { ContextEffects } from './context.effects';
+import { StoreContextService } from './store-context.service';
 
 export function localStorageSyncReducer(
   reducer: ActionReducer<any>
@@ -29,6 +30,6 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     }),
     EffectsModule.forFeature([ContextEffects])
   ],
-  providers: [ContextEffects]
+  providers: [ContextEffects, StoreContextService]
 })
 export class StoreContextModule {}

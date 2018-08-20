@@ -56,10 +56,7 @@ export function contextReducer(
   }
 }
 
-function updateExpected(
-  state: ContextData,
-  newTimes: TodayTimes
-): ContextData {
+function updateExpected(state: ContextData, newTimes: TodayTimes): ContextData {
   const nowHM = state.now.leave;
   state = { ...state, ...{ expected: newTimes } };
   return updateNow(state, nowHM);
@@ -70,7 +67,8 @@ function updateSettings(
   newSettings: ContextData
 ): ContextData {
   return {
-    ...state, ...{
+    ...state,
+    ...{
       staff: newSettings.staff,
       goals: newSettings.goals
     }
@@ -79,7 +77,8 @@ function updateSettings(
 
 function updateNow(context: ContextData, nowHM: HM): ContextData {
   return {
-    ...context, ...{
+    ...context,
+    ...{
       tick: nowHM,
       today: new Today(
         new HM(context.expected.arrive),
