@@ -7,44 +7,55 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { FetchWeekAction, SetWeekAction } from './timesheet.actions';
 import { StoreModule } from '@ngrx/store';
 import { DayInfo, HM } from '@timetool/utils/time-model/src/lib';
+import { StoreContextService } from '@timetool/store/context/src';
+import { StoreTimesheetService } from '@timetool/store/timesheet/src/lib/store-timesheet.service';
 
 describe('TimesheetEffects', () => {
-  let effects: TimesheetEffects;
   let actions$: Observable<any>;
-  let tssSpy;
 
   beforeEach(() => {
-    tssSpy = jasmine.createSpyObj('TimesheetClientService', ['fetchTimeData']);
     TestBed.configureTestingModule({
       imports: [StoreModule.forRoot({})],
       providers: [
         TimesheetEffects,
         provideMockActions(() => actions$),
         {
+          provide: StoreContextService,
+          useValue: jasmine.createSpyObj('StoreContextService', ['selectStaff'])
+        },
+        {
+          provide: StoreTimesheetService,
+          useValue: jasmine.createSpyObj('StoreTimesheetService', ['selectWeekDate'])
+        },
+        {
           provide: TimesheetClientService,
-          useValue: tssSpy
+          useValue: jasmine.createSpyObj('TimesheetClientService', ['fetchTimeData'])
         }
       ]
     });
-
-    effects = TestBed.get(TimesheetEffects);
   });
 
   it('should work', () => {
-    const action = new FetchWeekAction();
+    const eventAction = new FetchWeekAction();
+    actions$ = hot('--a-', { a: eventAction });
+
     const daysToReturn: DayInfo[] = [
       new DayInfo(1, undefined, new HM(510)),
       new DayInfo(2, undefined, new HM(456)),
       new DayInfo(3, undefined, new HM(456))
     ];
+    TestBed.get(TimesheetClientService).fetchTimeData.and.returnValue(of(daysToReturn));
+    const resultAction = new SetWeekAction(daysToReturn);
 
-    const completion = new SetWeekAction(daysToReturn);
-    tssSpy.fetchTimeData.and.returnValue(of(daysToReturn));
+    const staff = 'mdenson';
+    const week = new Date();
+    TestBed.get(StoreContextService).selectStaff.and.returnValue( of(staff) );
+    TestBed.get(StoreTimesheetService).selectWeekDate.and.returnValue( of(week) );
 
-    // Refer to 'Writing Marble Tests' for details on '--a-' syntax
-    actions$ = hot('--a-', { a: action });
-    const expected = cold('--b', { b: completion });
+    const effects$ = TestBed.get(TimesheetEffects);
 
-    expect(effects.fetchWeek$).toBeObservable(expected);
+    expect(effects$.fetchWeek$).toBeObservable(
+      cold('--b', { b: resultAction })
+    );
   });
 });

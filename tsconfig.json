@@ -39,7 +39,7 @@
         "libs/utils/time-model/src/index.ts"
       ],
       "store-context/*": [
-        "dist/store-context/*"
+        "dist/store/context/*"
       ],
       "@timetool/store/context": [
         "libs/store/context/src/index.ts"
@@ -57,7 +57,7 @@
         "libs/environment/src/index.ts"
       ],
       "store-timesheet/*": [
-        "dist/store-timesheet/*"
+        "dist/store/timesheet/*"
       ],
       "@timetool/store/timesheet": [
         "libs/store/timesheet/src/index.ts"
