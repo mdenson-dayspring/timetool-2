@@ -1,4 +1,5 @@
 import { AppPage } from './app.po';
+import { HM } from '@timetool/utils/time-model';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -9,6 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome');
+    const expected = HM.Now();
+    expect(page.getParagraphText()).toEqual(expected.toString());
   });
 });
