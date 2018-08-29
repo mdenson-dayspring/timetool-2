@@ -1,10 +1,10 @@
 import { Action } from '@ngrx/store';
-import { HM } from '@timetool/utils/time-model/src/lib';
+import { HM } from '@timetool/utils/time-model';
 import { ContextData, TodayTimes } from './context.model';
 
 export enum ContextActionTypes {
-  LOAD_PAGE = '[Context] Load Page',
-  TICK = '[Context] Tick',
+  START_CLOCK = '[Startup] Clock',
+  TICK = '[Interval] Tick',
   UPDATE_EXPECTED = '[Context] Update Expected Times',
   UPDATE_SETTINGS = '[Context] Update Settings',
   SET_TOUCH_DEVICE = '[Context] Set the flag for device supports touch.',
@@ -13,13 +13,12 @@ export enum ContextActionTypes {
   HIDE_WEEK_HELP = '[Context] Hide Week Help'
 }
 
-export class LoadPageAction implements Action {
-  readonly type = ContextActionTypes.LOAD_PAGE;
-  constructor(public payload: HM) {}
-}
-
 export class TickAction implements Action {
   readonly type = ContextActionTypes.TICK;
+  constructor(public payload: HM) {}
+}
+export class StartClockAction implements Action {
+  readonly type = ContextActionTypes.START_CLOCK;
   constructor(public payload: HM) {}
 }
 
@@ -48,7 +47,7 @@ export class HideWeekHelpAction implements Action {
 }
 
 export type ContextActions =
-  | LoadPageAction
+  | StartClockAction
   | TickAction
   | UpdateExpectedAction
   | UpdateSettingsAction

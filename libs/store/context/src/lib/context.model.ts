@@ -1,4 +1,4 @@
-import { Today } from '@timetool/utils/time-model/src/lib';
+import { Today, HM } from '@timetool/utils/time-model';
 
 export interface TodayTimes {
   arrive: string;
@@ -12,6 +12,8 @@ export interface TodayTimes {
  *  - contextReducer
  */
 export interface ContextData {
+  tick: HM;
+
   today: Today;
   now: Today;
 

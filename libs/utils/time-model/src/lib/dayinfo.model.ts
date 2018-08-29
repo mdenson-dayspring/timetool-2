@@ -32,10 +32,12 @@ export class DayInfo {
   }
 
   equals(other: DayInfo): boolean {
-    return this.dayOfWeek === other.dayOfWeek &&
+    return (
+      this.dayOfWeek === other.dayOfWeek &&
       this.name === other.name &&
       this._goal === other._goal &&
-      this._actual === other._actual;
+      this._actual === other._actual
+    );
   }
 
   show(): boolean {
