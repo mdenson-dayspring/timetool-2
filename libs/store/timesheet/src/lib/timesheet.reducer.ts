@@ -1,6 +1,7 @@
 import { TimesheetActions, TimesheetActionTypes } from './timesheet.actions';
 import { TimesheetWeek } from './timesheet.model';
 import { DayInfo } from '@timetool/utils/time-model/src/lib';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 export const initialState: TimesheetWeek = {
   date: undefined,
@@ -32,3 +33,10 @@ export function timesheetReducer(
       return state;
   }
 }
+
+export const getTimesheetDataState = createFeatureSelector('timesheet');
+
+export const selectWeekDate = createSelector(
+  getTimesheetDataState,
+  (state: TimesheetWeek) => state.date
+);

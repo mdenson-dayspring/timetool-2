@@ -42,6 +42,11 @@
         "shared",
         "lib:data"
       ]
+    },
+    "ui-framework": {
+      "tags": [
+        "lib:components"
+      ]
     }
   }
 }

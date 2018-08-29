@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subscriber } from 'rxjs';
 import { DayInfo, HM } from '@timetool/utils/time-model/src/lib';
-import { map } from 'rxjs/operators';
 import { environment } from '@timetool/environment/src/lib/environment';
 
 @Injectable({
@@ -14,7 +13,7 @@ export class TimesheetClientService {
 
   fetchTimeData(staff: string, weekDate: string): Observable<DayInfo[]> {
     return Observable.create((subscriber: Subscriber<DayInfo[]>) => {
-      // console.info('[TimesheetService.fetchTimeData]', staff, weekDate);
+      console.log('[TimesheetService.fetchTimeData]', staff, weekDate);
       if (staff) {
         const url =
           environment.timesheet_base_uri +
@@ -22,22 +21,20 @@ export class TimesheetClientService {
           staff +
           '&today=' +
           weekDate;
-        this.$http
-          .get(url)
-          .subscribe({
-            next: (data: any[]) => {
-              const dayList = data.map((day: { [key: string]: any }) => {
-                return new DayInfo(
-                  day.day_of_week,
-                  undefined,
-                  new HM(day.minutes)
-                );
-              });
-              subscriber.next(dayList);
-              subscriber.complete();
-            },
-            error: _ => console.error('Could not load week.')
-          });
+        this.$http.get(url).subscribe({
+          next: (data: any[]) => {
+            const dayList = data.map((day: { [key: string]: any }) => {
+              return new DayInfo(
+                day.day_of_week,
+                undefined,
+                new HM(day.minutes)
+              );
+            });
+            subscriber.next(dayList);
+            subscriber.complete();
+          },
+          error: _ => console.error('Could not load week.')
+        });
       } else {
         subscriber.complete();
         console.warn('Staff member is not set.');
