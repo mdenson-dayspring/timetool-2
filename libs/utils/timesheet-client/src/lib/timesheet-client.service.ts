@@ -3,24 +3,25 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subscriber } from 'rxjs';
 import { DayInfo, HM } from '@timetool/utils/time-model/src/lib';
 import { environment } from '@timetool/environment/src/lib/environment';
+import { Week } from '@timetool/store/timesheet';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TimesheetClientService {
-  // Using Angular DI we use the HTTP service
   constructor(private $http: HttpClient) {}
 
-  fetchTimeData(staff: string, weekDate: string): Observable<DayInfo[]> {
-    return Observable.create((subscriber: Subscriber<DayInfo[]>) => {
-      console.log('[TimesheetService.fetchTimeData]', staff, weekDate);
+  fetchTimeData(staff: string, sundayDate: Date): Observable<Week> {
+    return Observable.create((subscriber: Subscriber<Week>) => {
+      console.log('[TimesheetService.fetchTimeData]', staff, sundayDate);
       if (staff) {
         const url =
           environment.timesheet_base_uri +
           '?staff=' +
           staff +
           '&today=' +
-          weekDate;
+          sundayDate.toISOString;
+        console.log('[TimesheetService.fetchTimeData] url', url);
         this.$http.get(url).subscribe({
           next: (data: any[]) => {
             const dayList = data.map((day: { [key: string]: any }) => {
@@ -30,7 +31,12 @@ export class TimesheetClientService {
                 new HM(day.minutes)
               );
             });
-            subscriber.next(dayList);
+            const ret = {
+              id: sundayDate.toISOString(),
+              date: sundayDate,
+              timesheet: dayList
+            } as Week;
+            subscriber.next(ret);
             subscriber.complete();
           },
           error: _ => console.error('Could not load week.')
@@ -41,11 +47,4 @@ export class TimesheetClientService {
       }
     });
   }
-
-  // private _isoDate(d: Date) {
-  //   function pad(s: number): String {
-  //     return (s < 10) ? '0' + s : '' + s;
-  //   }
-  //   return [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join('-');
-  // }
 }

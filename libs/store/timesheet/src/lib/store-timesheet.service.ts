@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { TimesheetActions } from '@timetool/store/timesheet/src/lib/timesheet.actions';
-import { Store } from '@ngrx/store';
-import { selectWeekDate } from '@timetool/store/timesheet/src/lib/timesheet.reducer';
+import { Store, select } from '@ngrx/store';
+import { selectCurrentWeekDate, selectWeekEntities } from './week.reducer';
+import { WeekActions } from './week.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +9,18 @@ import { selectWeekDate } from '@timetool/store/timesheet/src/lib/timesheet.redu
 export class StoreTimesheetService {
   constructor(private store$: Store<any>) {}
 
-  dispatch(action: TimesheetActions) {
+  dispatch(action: WeekActions) {
     this.store$.dispatch(action);
   }
 
-  selectWeekDate() {
-    return this.store$.select(selectWeekDate);
+  selectCurrentWeekDate() {
+    return this.store$.pipe(
+      select(selectCurrentWeekDate)
+    );
+  }
+  selectCurrentWeekTimesheetData() {
+    return this.store$.pipe(
+      select(selectWeekEntities)
+    );
   }
 }

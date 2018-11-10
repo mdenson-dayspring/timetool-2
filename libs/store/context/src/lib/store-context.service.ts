@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 
 import { ContextActions } from './context.actions';
 import { selectStaff, selectLastTick } from './context.reducer';
@@ -15,9 +15,9 @@ export class StoreContextService {
   }
 
   selectStaff() {
-    return this.store$.select(selectStaff);
+    return this.store$.pipe(select(selectStaff));
   }
   selectLastTick() {
-    return this.store$.select(selectLastTick);
+    return this.store$.pipe(select(selectLastTick));
   }
 }

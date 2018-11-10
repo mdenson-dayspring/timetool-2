@@ -4,7 +4,7 @@ import { StoreContextService } from '@timetool/store/context';
 import { StartClockAction } from '@timetool/store/context';
 import { HM } from '@timetool/utils/time-model';
 import {
-  ResetWeekAction,
+  SetCurrentWeekAction,
   FetchWeekAction,
   StoreTimesheetService
 } from '@timetool/store/timesheet';
@@ -25,7 +25,7 @@ export class AppComponent implements OnDestroy {
     // set the tick for the time the app was opened.
     this.context$.dispatch(new StartClockAction(HM.Now()));
 
-    this.timesheet$.dispatch(new ResetWeekAction());
+    this.timesheet$.dispatch(new SetCurrentWeekAction());
     this.timesheet$.dispatch(new FetchWeekAction());
 
     this.time$ = this.context$.selectLastTick();

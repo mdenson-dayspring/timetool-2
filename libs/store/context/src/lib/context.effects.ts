@@ -9,7 +9,7 @@ import {
   SetHoverDeviceSupportAction
 } from './context.actions';
 import { ContextData } from './context.model';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { selectLastTick } from './context.reducer';
 
 @Injectable()
@@ -29,7 +29,7 @@ export class ContextEffects {
   @Effect()
   heartbeat$ = interval(1000).pipe(
     map(() => HM.Now()),
-    withLatestFrom(this.store$.select(selectLastTick)),
+    withLatestFrom(this.store$.pipe(select(selectLastTick))),
     filter(([now, last]) => !last || !last.equals(now)),
     map(([now, _]) => {
       return new TickAction(now);

@@ -6,7 +6,6 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 export const initialState: ContextData = {
   tick: undefined,
 
-  staff: '',
   expected: {
     arrive: '9:00',
     lunch: '1:00',

@@ -17,10 +17,7 @@ class MockStore {
 describe('StoreContextService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        StoreContextService,
-        { provide: Store, useClass: MockStore }
-      ]
+      providers: [StoreContextService, { provide: Store, useClass: MockStore }]
     });
   });
 
