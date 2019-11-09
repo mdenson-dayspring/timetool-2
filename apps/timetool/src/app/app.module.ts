@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import { storeFreeze } from 'ngrx-store-freeze';
+
 import { NxModule } from '@nrwl/nx';
 import { environment } from '@timetool/environment/src/lib/environment';
 import { UtilsTimesheetClientModule } from '@timetool/utils/timesheet-client/src';
@@ -23,7 +23,7 @@ import { HeaderModule } from '@timetool/ui/framework/src/lib/header/header.modul
     UtilsTimesheetClientModule,
     StoreModule.forRoot(
       {},
-      { metaReducers: !environment.production ? [storeFreeze] : [] }
+      { metaReducers: !environment.production ? [] : [], runtimeChecks: { strictStateImmutability: true, strictActionImmutability: true } }
     ),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
