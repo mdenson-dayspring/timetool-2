@@ -91,7 +91,7 @@
               "apps\\timetool\\tsconfig.app.json",
               "apps\\timetool\\tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "!apps/timetool/**"]
           }
         }
       }
@@ -116,7 +116,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps\\timetool-e2e\\tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "!apps/timetool-e2e/**"]
           }
         }
       }
@@ -142,7 +142,7 @@
               "libs/utils/time-model/tsconfig.lib.json",
               "libs/utils/time-model/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "!libs/utils/time-model/**"]
           }
         }
       }
@@ -168,7 +168,7 @@
               "libs/store/context/tsconfig.lib.json",
               "libs/store/context/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "!libs/store/context/**"]
           }
         }
       }
@@ -194,7 +194,7 @@
               "libs/utils/timesheet-client/tsconfig.lib.json",
               "libs/utils/timesheet-client/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "!libs/utils/timesheet-client/**"]
           }
         }
       }
@@ -220,7 +220,7 @@
               "libs/environment/tsconfig.lib.json",
               "libs/environment/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "!libs/environment/**"]
           }
         }
       }
@@ -246,7 +246,7 @@
               "libs/store/timesheet/tsconfig.lib.json",
               "libs/store/timesheet/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "!libs/store/timesheet/**"]
           }
         }
       }
@@ -272,7 +272,7 @@
               "libs/ui/framework/tsconfig.lib.json",
               "libs/ui/framework/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "!libs/ui/framework/**"]
           }
         }
       }
