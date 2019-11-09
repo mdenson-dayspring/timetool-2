@@ -29,9 +29,7 @@
               "apps/timetool/src/favicon.ico",
               "apps/timetool/src/assets"
             ],
-            "styles": [
-              "apps/timetool/src/styles.scss"
-            ],
+            "styles": ["apps/timetool/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -78,9 +76,7 @@
             "polyfills": "apps/timetool/src/polyfills.ts",
             "tsConfig": "apps\\timetool\\tsconfig.spec.json",
             "karmaConfig": "apps\\timetool\\karma.conf.js",
-            "styles": [
-              "apps/timetool/src/styles.scss"
-            ],
+            "styles": ["apps/timetool/src/styles.scss"],
             "scripts": [],
             "assets": [
               "apps/timetool/src/favicon.ico",
@@ -95,9 +91,7 @@
               "apps\\timetool\\tsconfig.app.json",
               "apps\\timetool\\tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -122,9 +116,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps\\timetool-e2e\\tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -150,9 +142,7 @@
               "libs/utils/time-model/tsconfig.lib.json",
               "libs/utils/time-model/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -178,9 +168,7 @@
               "libs/store/context/tsconfig.lib.json",
               "libs/store/context/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -206,9 +194,7 @@
               "libs/utils/timesheet-client/tsconfig.lib.json",
               "libs/utils/timesheet-client/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -234,9 +220,7 @@
               "libs/environment/tsconfig.lib.json",
               "libs/environment/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -262,9 +246,7 @@
               "libs/store/timesheet/tsconfig.lib.json",
               "libs/store/timesheet/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -290,9 +272,7 @@
               "libs/ui/framework/tsconfig.lib.json",
               "libs/ui/framework/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -300,6 +280,19 @@
   },
   "defaultProject": "timetool",
   "cli": {
-    "defaultCollection": "@nrwl/schematics"
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/schematics:library": {
+      "unitTestRunner": "karma",
+      "framework": "angular"
+    },
+    "@nrwl/schematics:application": {
+      "unitTestRunner": "karma",
+      "e2eTestRunner": "protractor"
+    },
+    "@nrwl/schematics:node-application": {
+      "framework": "express"
+    }
   }
 }

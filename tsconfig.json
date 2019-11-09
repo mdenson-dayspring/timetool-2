@@ -9,65 +9,30 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es5",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
     "paths": {
-      "@timetool/*": [
-        "libs/*"
-      ],
-      "week-api-client/*": [
-        "dist/week-api-client/*"
-      ],
-      "@timetool/week-api-client": [
-        "libs/week-api-client/src/index.ts"
-      ],
-      "utils-time-utils/*": [
-        "dist/utils-time-utils/*"
-      ],
-      "@timetool/utils/time-utils": [
-        "libs/utils/time-utils/src/index.ts"
-      ],
-      "utils-time-model/*": [
-        "dist/utils-time-model/*"
-      ],
-      "@timetool/utils/time-model": [
-        "libs/utils/time-model/src/index.ts"
-      ],
-      "store-context/*": [
-        "dist/store/context/*"
-      ],
-      "@timetool/store/context": [
-        "libs/store/context/src/index.ts"
-      ],
-      "utils-timesheet-client/*": [
-        "dist/utils-timesheet-client/*"
-      ],
+      "@timetool/*": ["libs/*"],
+      "week-api-client/*": ["dist/week-api-client/*"],
+      "@timetool/week-api-client": ["libs/week-api-client/src/index.ts"],
+      "utils-time-utils/*": ["dist/utils-time-utils/*"],
+      "@timetool/utils/time-utils": ["libs/utils/time-utils/src/index.ts"],
+      "utils-time-model/*": ["dist/utils-time-model/*"],
+      "@timetool/utils/time-model": ["libs/utils/time-model/src/index.ts"],
+      "store-context/*": ["dist/store/context/*"],
+      "@timetool/store/context": ["libs/store/context/src/index.ts"],
+      "utils-timesheet-client/*": ["dist/utils-timesheet-client/*"],
       "@timetool/utils/timesheet-client": [
         "libs/utils/timesheet-client/src/index.ts"
       ],
-      "environment/*": [
-        "dist/environment/*"
-      ],
-      "@timetool/environment": [
-        "libs/environment/src/index.ts"
-      ],
-      "store-timesheet/*": [
-        "dist/store/timesheet/*"
-      ],
-      "@timetool/store/timesheet": [
-        "libs/store/timesheet/src/index.ts"
-      ],
-      "ui-framework/*": [
-        "dist/ui-framework/*"
-      ],
-      "@timetool/ui/framework": [
-        "libs/ui/framework/src/index.ts"
-      ]
-    }
+      "environment/*": ["dist/environment/*"],
+      "@timetool/environment": ["libs/environment/src/index.ts"],
+      "store-timesheet/*": ["dist/store/timesheet/*"],
+      "@timetool/store/timesheet": ["libs/store/timesheet/src/index.ts"],
+      "ui-framework/*": ["dist/ui-framework/*"],
+      "@timetool/ui/framework": ["libs/ui/framework/src/index.ts"]
+    },
+    "module": "es2015",
+    "rootDir": "."
   }
 }

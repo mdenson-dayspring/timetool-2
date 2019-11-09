@@ -7,7 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 
-import { NxModule } from '@nrwl/nx';
+import { NxModule } from '@nrwl/angular';
 import { environment } from '@timetool/environment/src/lib/environment';
 import { UtilsTimesheetClientModule } from '@timetool/utils/timesheet-client/src';
 import { StoreContextModule } from '@timetool/store/context/src/lib/store-context.module';
@@ -23,7 +23,13 @@ import { HeaderModule } from '@timetool/ui/framework/src/lib/header/header.modul
     UtilsTimesheetClientModule,
     StoreModule.forRoot(
       {},
-      { metaReducers: !environment.production ? [] : [], runtimeChecks: { strictStateImmutability: true, strictActionImmutability: true } }
+      {
+        metaReducers: !environment.production ? [] : [],
+        runtimeChecks: {
+          strictStateImmutability: true,
+          strictActionImmutability: true
+        }
+      }
     ),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
